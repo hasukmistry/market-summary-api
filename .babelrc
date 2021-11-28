@@ -1,0 +1,15 @@
+{
+    "presets": ["@babel/preset-env"],
+    "plugins": [
+        "@babel/plugin-transform-runtime",
+        [
+            "babel-plugin-module-resolver",
+            {
+                "alias": {
+                    "configMap": "./config",
+                    "dbModels": "./src/models/"
+                }
+            }
+        ]
+    ]
+}
