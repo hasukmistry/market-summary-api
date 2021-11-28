@@ -27,6 +27,7 @@ module.exports = {
     "func-names": "off",
     "import/first": "off",
     "import/order": "off",
+    "import/no-import-module-exports": "off",
     "no-unused-vars": "off",
     "import/newline-after-import": "off",
     "camelcase": "off",
