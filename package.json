@@ -2,6 +2,9 @@
   "name": "market-summary-api",
   "version": "1.0.0",
   "description": "An API service for market summary app",
+  "scripts": {
+    "start": "nodemon --exec babel-node ./src/server.js"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
