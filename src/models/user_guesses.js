@@ -1,4 +1,5 @@
 'use strict';
+
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
@@ -10,14 +11,14 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
-            this.belongsTo(models.users, { 
-                as: 'user', 
-                foreignKey: 'user_id', 
+            this.belongsTo(models.users, {
+                as: 'user',
+                foreignKey: 'user_id',
                 targetKey: 'id',
                 constraints: true
-            })
+            });
         }
-    };
+    }
     user_guesses.init({
         user_id: DataTypes.INTEGER,
         guess_price: DataTypes.DOUBLE,
@@ -28,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         sequelize,
         timestamps: false,
-        modelName: 'user_guesses',
+        modelName: 'user_guesses'
     });
     return user_guesses;
 };

@@ -1,4 +1,5 @@
 'use strict';
+
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
@@ -10,13 +11,13 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
-            this.hasMany(models.user_guesses,{ 
-                foreignKey: 'user_id', 
-                as: 'user_guess', 
-                onDelete: 'CASCADE' 
+            this.hasMany(models.user_guesses, {
+                foreignKey: 'user_id',
+                as: 'user_guess',
+                onDelete: 'CASCADE'
             });
         }
-    };
+    }
     users.init({
         points: DataTypes.INTEGER,
         ip_addr: DataTypes.STRING,
