@@ -1,0 +1,65 @@
+---
+version: '3.7'
+
+volumes:
+  data_db:
+
+networks:
+  app-network:
+    driver: bridge
+
+services:
+  db:
+    image: mariadb:10.6.2
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'epilot'
+      MYSQL_ROOT_PASSWORD: 'foobar'
+    ports:
+      - "20206:3306"
+    volumes:
+      - data_db:/var/lib/mysql
+      - ./dump/market-summary.sql:/docker-entrypoint-initdb.d/market-summary.sql:ro
+    command: [ "mysqld", "--max-allowed-packet=536870912", "--default-authentication-plugin=mysql_native_password" ]
+    networks:
+      - app-network
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
+      - UPLOAD_LIMIT=100M
+    depends_on:
+      - db
+    links:
+      - db
+    networks:
+      - app-network
+
+  app:
+    build:
+      context: ./
+      dockerfile: docker/Dockerfile
+    environment:
+      - NODE_ENV=development
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASS=foobar
+      - DB_NAME=epilot
+      - DB_PORT=3306
+      - API_PORT=5000
+      - API_HOST=http://localhost
+    tty: true
+    ports:
+      - 5000:5000
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    links:
+      - db
+    networks:
+      - app-network
