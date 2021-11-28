@@ -2,9 +2,7 @@
 
 const path = require('path');
 
-require('dotenv').config({ 
-    path: path.resolve(__dirname, '.env')
-});
+require('dotenv').config();
 
 const dbHost = process.env.DB_HOST ?? '';
 const dbName = process.env.DB_NAME ?? '';

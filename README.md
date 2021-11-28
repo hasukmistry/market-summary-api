@@ -9,11 +9,11 @@ An API service for market summary app. It contains initial routes to run front-e
 - [How it works?](#how-it-works)
 
 ## Dependencies
-Make sure to install docker and docker-compose in local machine.
+Make sure to install docker, docker-compose and make command utilities in your local machine.
 
 ## Setup
 ```
-docker-compose up -d
+make setup
 ```
 
 ## Available Endpoints
@@ -26,6 +26,8 @@ docker-compose up -d
 |`/guess/resolve`|*POST*|Resolves guess when its atleast 60 seconds old.|
 
 ## How it works?
+Once database server is up and running in your local machine.
+
 Try to make below CURL request in console,
 ```
 curl http://localhost:5000/rate -X GET

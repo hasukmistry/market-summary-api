@@ -15,11 +15,7 @@ RUN npm i -g npm@latest
 # Essentials
 RUN apt-get -y install wget curl gnupg gcc make autoconf libc-dev pkg-config
 
-ADD . /app
-
 WORKDIR /app
-
-RUN npm install
 
 EXPOSE $API_PORT
 
