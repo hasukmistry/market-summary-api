@@ -5,7 +5,9 @@
   "scripts": {
     "start": "nodemon --exec babel-node ./src/server.js",
     "lint": "eslint ./src",
-    "lint-fix": "eslint --fix ./src"
+    "lint-fix": "eslint --fix ./src",
+    "start-production": "pm2 start .pm2_config.json",
+    "stop-production": "pm2 stop .pm2_config.json"
   },
   "author": "",
   "license": "ISC",
